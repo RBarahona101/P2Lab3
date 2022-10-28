@@ -23,7 +23,7 @@ public class P2Lab3_RigobertoBarahona {
             switch(opcion){
                 case 1: {
                     System.out.print("Nombre: ");
-                    String nombre = lea.nextLine();
+                    String nombre = lea.next();
                     Scanner lea = new Scanner(System.in);
                     boolean pendejo1 = false;
                     boolean pendejo2 = false;
@@ -71,7 +71,7 @@ public class P2Lab3_RigobertoBarahona {
                     System.out.print("Edad: ");
                     int edad = lea.nextInt();
                     System.out.print("Descripcion: ");
-                    String description = lea.nextLine();
+                    String description = lea.next();
                     System.out.println("1) Norfair");
                     System.out.println("2) Brinstar");
                     System.out.println("3) Maridia");
