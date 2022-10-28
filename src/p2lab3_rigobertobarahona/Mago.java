@@ -1,14 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p2lab3_rigobertobarahona;
 
-/**
- *
- * @author Ivins
- */
-public class Mago {
+
+public class Mago extends Personaje{
+    private String magia;
+
+    public String getMagia() {
+        return magia;
+    }
+
+    public void setMagia(String magia) {
+        this.magia = magia;
+    }
+
+    public Mago(int edad, String nombre, String raza, String nacionalidad, double height, double peso, String description, int AC, int CS, int HP, String Pclass, String magia) {
+        super(edad, nombre, raza, nacionalidad, height, peso, description, AC, CS, HP, Pclass);
+        this.magia = magia;
+    }
     
 }
