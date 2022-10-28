@@ -31,6 +31,23 @@ public class Clerigo extends Personaje {
         this.deity = deity;
         this.invocacion = invocacion;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n"
+        + "Raza: " + raza + "\n"
+        + "Edad: " + edad + "\n"  
+        + "Class: Clerigo" + "\n"        
+        + "Sub-Class: " + Pclass + "\n"
+        + "Seguior de " + deity + "\n"        
+        + "Ciudad: " + nacionalidad + "\n"
+        + "Altura: " + height + "m" + "\n"  
+        + "Peso: " + peso + "kg" + "\n"
+        + "AC: " + AC + "\n"
+        + "CS: " + CS + "\n"
+        + "HP: " + HP + "\n"
+        + "Invocacion: " + invocacion;  
+    }
     
     
 }

@@ -24,6 +24,24 @@ public class Picaro extends Personaje{
         super(edad, nombre, raza, nacionalidad, height, peso, description, AC, CS, HP, Pclass);
         this.instrumento = instrumento;
         this.heists= heists;
+        
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n"
+        + "Raza: " + raza + "\n"
+        + "Edad: " + edad + "\n"          
+        + "Class: Picaro" + "\n"        
+        + "Sub-Class: " + Pclass + "\n"
+        + "Instrumento: " + instrumento + "\n"              
+        + "Ciudad: " + nacionalidad + "\n"
+        + "Heists Exitosos: " + heists + "\n"               
+        + "Altura: " + height + "m" + "\n"  
+        + "Peso: " + peso + "kg" + "\n"
+        + "AC: " + AC + "\n"
+        + "CS: " + CS + "\n"
+        + "HP: " + HP + "\n";
     }
     
 }

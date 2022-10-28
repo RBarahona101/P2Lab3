@@ -1,17 +1,17 @@
 package p2lab3_rigobertobarahona;
 
 public class Personaje {
-    private int edad;
-    private String nombre;
-    private String raza;
-    private String nacionalidad;    
-    private double height;
-    private double peso;
-    private String description;
-    private int AC;
-    private int CS;
-    private int HP;
-    private String Pclass;
+    protected int edad;
+    protected String nombre;
+    protected String raza;
+    protected String nacionalidad;    
+    protected double height;
+    protected double peso;
+    protected String description;
+    protected int AC;
+    protected int CS;
+    protected int HP;
+    protected String Pclass;
     
     public Personaje() {
     }
@@ -122,10 +122,11 @@ public class Personaje {
     public String toString() {
         return "Nombre: " + nombre + "\n"
         + "Raza: " + raza + "\n"
+        + "Edad: " + edad + "\n"          
         + "Sub-Class: " + Pclass + "\n"
         + "Ciudad: " + nacionalidad + "\n"
-        + "Altura: " + height + " m" + "\n"  
-        + "Peso: " + peso + " kg" + "\n"
+        + "Altura: " + height + "m" + "\n"  
+        + "Peso: " + peso + "kg" + "\n"
         + "AC: " + AC + "\n"
         + "CS: " + CS + "\n"
         + "HP: " + HP ;        

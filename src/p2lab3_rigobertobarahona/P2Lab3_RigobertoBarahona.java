@@ -185,9 +185,9 @@ public class P2Lab3_RigobertoBarahona {
                                 System.out.print("Dios/Diablo principal: ");
                                 String deity = lea.next();
                                 System.out.print("Tipo de Invocacion: ");
-                                String invocation = lea.next();
+                                String invocacion = lea.next();
                                 String Pclass = "Lead";
-                                personajes.add( new Clerigo (edad, nombre, raza, nacionalidad, height, peso, description, AC, CS, HP, Pclass, deity, invocation ) );
+                                personajes.add( new Clerigo (edad, nombre, raza, nacionalidad, height, peso, description, AC, CS, HP, Pclass, deity, invocacion ) );
                                 break;
                             }
                             case 3: {
@@ -290,22 +290,8 @@ public class P2Lab3_RigobertoBarahona {
                     break;
                 }
                 case 2 : {
-                    String salida = "";
-                    for(Object temp: personajes){
-                        if(temp instanceof Personaje){
-                            salida += personajes.indexOf(temp) + " - " + temp + "\n";
-                        }
-                    }
-                    System.out.println(salida);  
-                    break;
-                }
-                case 3: {
-                    
-                    break;
-                }
-                case 4: {
                     if (personajes.isEmpty() ){
-                        System.out.println("No hay nadie");
+                        System.out.println("No Hay Nadie");
                     }else{
                         String salida = "";
                         for(Object temp: personajes){
@@ -314,11 +300,375 @@ public class P2Lab3_RigobertoBarahona {
                             }
                         }
                         System.out.println(salida);  
+                    }
+                    break;
+                }
+                case 3: {
+                    if (personajes.isEmpty() ){
+                        System.out.println("No Hay Nadie");
+                    }else{
+                        String salida = "";
+                        for(Object temp: personajes){
+                            if(temp instanceof Personaje){
+                                salida += personajes.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);  
+                        System.out.println("Indice a Modificar: ");
+                        int indice = lea.nextInt();
+                        System.out.println("1) Datos Generales");
+                        System.out.println("2) Datos de Clase");
+                        System.out.print("Ingrese que modificar: ");
+                        int opcion2 = lea.nextInt();
+                        switch(opcion2){
+                            case 1: {
+                                System.out.print("Nombre: ");
+                                String nombre = lea.next();
+                                Scanner lea = new Scanner(System.in);
+                                boolean pendejo1 = false;
+                                boolean pendejo2 = false;
+                                System.out.println("1) Mediano");
+                                System.out.println("2) Enano");
+                                System.out.println("3) Elfo");
+                                System.out.println("4) Humano");
+                                System.out.print("Eligir Raza: ");
+                                String raza = "";
+                                int opcion3 = lea.nextInt();
+                                int HP = 0;
+                                switch (opcion3) {
+                                    case 1: {
+                                        raza = "Mediano";
+                                        HP = 50 + r.nextInt(10);
+                                        break;
+                                    }
+                                    case 2: {
+                                        raza = "Enano";
+                                        HP = 80 + r.nextInt(20);
+                                        break;
+                                    }
+                                    case 3: {
+                                        raza = "Elfo";
+                                        HP = 50 + r.nextInt(20);
+                                        break;
+                                    }
+                                    case 4: {
+                                        raza = "Humano";
+                                        HP = 45 + r.nextInt(30);
+                                        break;
+                                    }
+                                    default: {
+                                        System.out.println("Es pendejo");
+                                        pendejo1 = true;
+                                        break;
+                                    }
+                                }
+                                System.out.print("Estatura: ");
+                                double height = lea.nextDouble();
+                                System.out.print("Peso: ");
+                                double peso = lea.nextDouble();
+                                System.out.print("Edad: ");
+                                int edad = lea.nextInt();
+                                System.out.print("Descripcion: ");
+                                String description = lea.next();
+                                System.out.println("1) Norfair");
+                                System.out.println("2) Brinstar");
+                                System.out.println("3) Maridia");
+                                System.out.println("4) Zebes");
+                                System.out.println("5) Crateria");
+                                String nacionalidad = "";
+                                System.out.print("Eligir Ciudad: ");
+                                int opcion4 = lea.nextInt();
+                                switch (opcion4) {
+                                    case 1: {
+                                        nacionalidad = "Norfair";
+                                        break;
+                                    }
+                                    case 2: {
+                                        nacionalidad = "Brinstar";
+                                        break;
+                                    }
+                                    case 3: {
+                                        nacionalidad = "Maridia";
+                                        break;
+                                    }
+                                    case 4: {
+                                        nacionalidad = "Zebes";
+                                        break;
+                                    }
+                                    case 5: {
+                                        nacionalidad = "Crateria";
+                                        break;
+                                    }
+                                    default: {
+                                        System.out.println("Es Pendejo");
+                                        pendejo2 = true;
+                                        break;
+                                    }
+                                }
+                                if (pendejo1 == false && pendejo2 == false){
+                                    personajes.get(indice).setNombre(nombre);
+                                    personajes.get(indice).setRaza(raza);
+                                    personajes.get(indice).setEdad(edad);
+                                    personajes.get(indice).setNacionalidad(nacionalidad);
+                                    personajes.get(indice).setHeight(height);
+                                    personajes.get(indice).setPeso(peso);
+                                    personajes.get(indice).setHP(HP);
+                                    System.out.println("Modificacion Exitosa");
+                                }else{
+                                    System.out.println("Nope por pendejo");
+                                }
+                                break;
+                            }
+                            case 2: {
+                                if( personajes.get(indice) instanceof Barbaro){
+                                    System.out.print("Experiencia: ");
+                                    int exp = lea.nextInt();
+                                    boolean pendejo3 = false;
+                                    String arma = "";
+                                    System.out.println("1) Pesada");
+                                    System.out.println("2) Ligera");
+                                    System.out.println("3) Escudo");
+                                    System.out.print("Eligir Arma: ");
+                                    int opcion5 = lea.nextInt();
+                                    switch (opcion5) {
+                                        case 1: {
+                                            arma = "Pesada";
+                                            break;
+                                        }
+                                        case 2: {
+                                            arma = "Ligera";
+                                            break;
+                                        }
+                                        case 3: {
+                                            arma = "Escudo";
+                                            break;
+                                        }
+                                        default: {
+                                            System.out.println("Es Rependejo");
+                                            pendejo3 = true;
+                                            break;
+                                        }
+                                    }
+                                    if (pendejo3 == false) {
+                                        System.out.println("1) Lead");
+                                        System.out.println("2) Support");
+                                        System.out.println("3) Offensive");
+                                        String Pclass = "";
+                                        System.out.print("Eligir subClase: ");
+                                        int opcion6 = lea.nextInt();
+                                        switch (opcion6) {
+                                            case 1: {
+                                                Pclass = "Lead";
+                                                personajes.get(indice).setPclass(Pclass);
+                                                ((Barbaro) personajes.get(indice)).setArma(arma);
+                                                ((Barbaro) personajes.get(indice)).setExp(exp);
+                                                System.out.println("Modificacion Exitosa");
+                                                break;
+                                            }
+                                            case 2: {
+                                                Pclass = "Support";
+                                                personajes.get(indice).setPclass(Pclass);
+                                                ((Barbaro) personajes.get(indice)).setArma(arma);
+                                                ((Barbaro) personajes.get(indice)).setExp(exp);
+                                                System.out.println("Modificacion Exitosa");
+
+                                                break;
+                                            }
+                                            case 3: {
+                                                Pclass = "Offensive";
+                                                personajes.get(indice).setPclass(Pclass);
+                                                ((Barbaro) personajes.get(indice)).setArma(arma);
+                                                ((Barbaro) personajes.get(indice)).setExp(exp);
+                                                System.out.println("Modificacion Exitosa");
+                                                break;
+                                            }
+                                            default: {
+                                                System.out.println("Lo Odio");
+                                                break;
+                                            }
+                                        }
+                                    } else {
+                                        System.out.println("Lo detesto");
+                                    }
+                                }else if (personajes.get(indice) instanceof Clerigo){
+                                    System.out.print("Dios/Diablo principal: ");
+                                    String deity = lea.next();
+                                    System.out.print("Tipo de Invocacion: ");
+                                    String invocacion = lea.next();
+                                    String Pclass = "Lead";
+                                    ( (Clerigo) personajes.get(indice) ).setDeity(deity);
+                                    ( (Clerigo) personajes.get(indice) ).setInvocacion(invocacion);
+                                    System.out.println("Modificacion Exitosa");
+                                } else if (personajes.get(indice) instanceof Mago) {
+                                    boolean pendejo3 = false;
+                                    System.out.println("1) Magia Blanca");
+                                    System.out.println("2) Magia Negra");
+                                    System.out.println("3) Magia Sanadora");
+                                    System.out.print("Seleccionar Opcion: ");
+                                    int opcion5 = lea.nextInt();
+                                    String magia = "";
+                                    switch (opcion5) {
+                                        case 1: {
+                                            magia = "Magia Blanca";
+                                            break;
+                                        }
+                                        case 2: {
+                                            magia = "Magia Negra";
+                                            break;
+                                        }
+                                        case 3: {
+                                            magia = "Magia Sanadora";
+                                            break;
+                                        }
+                                        default: {
+                                            System.out.println("Sos Rependojo");
+                                            pendejo3 = true;
+                                            break;
+                                        }
+                                    }
+                                    if (pendejo3 == false) {
+                                        String Pclass = "";
+                                        System.out.println("1) Support");
+                                        System.out.println("2) Tank");
+                                        System.out.print("Eligir SubClase: ");
+                                        int opcion6 = lea.nextInt();
+                                        if (opcion6 == 1) {
+                                            Pclass = "Support";
+                                            ( (Mago) personajes.get(indice) ).setMagia(magia);
+                                            personajes.get(indice).setPclass(Pclass);
+                                            System.out.println("Modificacion Exitosa");
+                                        } else if (opcion6 == 2) {
+                                            Pclass = "Tank";
+                                            ( (Mago) personajes.get(indice) ).setMagia(magia);
+                                            personajes.get(indice).setPclass(Pclass);
+                                            System.out.println("Modificacion Exitosa");
+                                        } else {
+                                            System.out.println("Lo detesto");
+                                        }
+                                    }
+                                }else{
+                                     System.out.print("Heists Exitosos: ");
+                                    int heists = lea.nextInt();
+                                    String instrumento = "";
+                                    boolean pendejo3 = false;
+                                    System.out.println("1) Amuleto");
+                                    System.out.println("2) Arma");
+                                    System.out.println("3) Piedra Antigua");
+                                    System.out.print("Eligir instrumento: ");
+                                    int opcion5 = lea.nextInt();
+                                    switch(opcion5){
+                                        case 1: {
+                                            instrumento = "Amuleto";
+                                            break;
+                                        }
+                                        case 2: {
+                                            instrumento = "Arma";
+                                            break;
+                                        }
+                                        case 3: {
+                                            instrumento = "Piedra Antigua";
+                                            break;
+                                        }
+                                        default: {
+                                            System.out.println("Es pendejo");
+                                            pendejo3 = true;
+                                        }
+                                    }
+                                    if (pendejo3 == false){
+                                        String Pclass = "";
+                                        System.out.println("1) Spammer");
+                                        System.out.println("2) Tank");
+                                        System.out.print("Eligir SubClase: ");
+                                        int opcion6 = lea.nextInt();
+                                        if (opcion6 == 1) {
+                                            Pclass = "Spammer";
+                                            personajes.get(indice).setPclass(Pclass);
+                                            ( (Picaro) personajes.get(indice) ).setHeists(heists);
+                                            ( (Picaro) personajes.get(indice) ).setInstrumento(instrumento);
+                                        } else if (opcion6 == 2) {
+                                            Pclass = "Tank";
+                                            personajes.get(indice).setPclass(Pclass);
+                                            ( (Picaro) personajes.get(indice) ).setHeists(heists);
+                                            ( (Picaro) personajes.get(indice) ).setInstrumento(instrumento);
+                                        } else {
+                                            System.out.println("Lo Odio");
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                            default: {
+                                System.out.println("Lo detesto");
+                                break;
+                            }
+                        }
+                    }
+                    break;                    
+                }
+                case 4: {
+                    if (personajes.isEmpty()) {
+                        System.out.println("No Hay Nadie");
+                    } else {
+                        String salida = "";
+                        for (Object temp : personajes) {
+                            if (temp instanceof Personaje) {
+                                salida += personajes.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
                         System.out.print("Indice a remover: ");
                         int indice = lea.nextInt();
                         personajes.remove(indice);
                         System.out.println("Se ha removido exitosamente");
                     }
+                    break;
+                }
+                case 5: {
+                    if (personajes.size() < 2) {
+                        System.out.println("No hay suficientes personajes");
+                    } else {
+                        String salida = "";
+                        for (Object temp : personajes) {
+                            if (temp instanceof Personaje) {
+                                salida += personajes.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Personaje de Jugador 1: ");
+                        int indice1 = lea.nextInt();
+                        ArrayList<Personaje> combate = new ArrayList();
+                        combate.add(personajes.get(indice1));
+                        boolean pendejo = true;
+                        while (pendejo == true) {
+                            System.out.println("Personaje de Jugador 2 (No hay mirror matches): ");
+                            int indice2 = lea.nextInt();
+                            if (indice2 == indice1){
+                                System.out.println("No habra mirror matches");
+                            }else{
+                                pendejo = false;
+                                combate.add(personajes.get(indice2) );
+                            }
+                        }
+                        int turno = 1;
+                        boolean duel = true;
+                        System.out.println(combate.get(0).getNombre() + " vs " + combate.get(1).getNombre() );
+                        int cCS1 = combate.get(0).getCS();
+                        int cHP1 = combate.get(0).getHP();
+                        int cAC1 = combate.get(0).getAC();
+                        int cCS2 = combate.get(1).getCS();
+                        int cHP2 = combate.get(1).getHP();
+                        int cAC2 = combate.get(1).getAC();
+                        while(duel == true){
+                            int dmg;
+                        }
+                        
+                        
+                        
+                    }
+                    break;
+                }
+                default : {
+                    flag = false;
                     break;
                 }
             }

@@ -25,6 +25,22 @@ public class Barbaro extends Personaje {
         this.arma = arma;
         this.exp = exp;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n"
+        + "Raza: " + raza + "\n"
+        + "Edad: " + edad + "\n"       
+        + "Class: Barbaro" + "\n"        
+        + "Sub-Class: " + Pclass + "\n"
+        + "Ciudad: " + nacionalidad + "\n"
+        + "Altura: " + height + "m" + "\n"  
+        + "Peso: " + peso + "kg" + "\n"
+        + "AC: " + AC + "\n"
+        + "CS: " + CS + "\n"
+        + "HP: " + HP + "\n"
+        + "Arma: " + arma;  
+    }
     
     
 }

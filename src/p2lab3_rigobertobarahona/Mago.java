@@ -15,6 +15,23 @@ public class Mago extends Personaje{
     public Mago(int edad, String nombre, String raza, String nacionalidad, double height, double peso, String description, int AC, int CS, int HP, String Pclass, String magia) {
         super(edad, nombre, raza, nacionalidad, height, peso, description, AC, CS, HP, Pclass);
         this.magia = magia;
+        
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n"
+        + "Raza: " + raza + "\n"
+        + "Edad: " + edad + "\n"  
+        + "Class: Mago" + "\n"        
+        + "Sub-Class: " + Pclass + "\n"  
+        + "Tipo de Magia: " + magia + "\n"        
+        + "Ciudad: " + nacionalidad + "\n"
+        + "Altura: " + height + "m" + "\n"  
+        + "Peso: " + peso + "kg" + "\n"
+        + "AC: " + AC + "\n"
+        + "CS: " + CS + "\n"
+        + "HP: " + HP + "\n";
     }
     
 }
