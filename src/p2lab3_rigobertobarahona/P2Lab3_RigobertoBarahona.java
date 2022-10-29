@@ -11,6 +11,10 @@ public class P2Lab3_RigobertoBarahona {
     public static void main(String[] args) {
         boolean flag = true;
         ArrayList<Personaje> personajes = new ArrayList();
+        personajes.add( new Barbaro ( 35, "Conan", "Humano", "Zebes", 2.08, 65.5, "El Barbarico", 65, 93, 75, "Offensive", "Pesada", 999) );
+        personajes.add( new Picaro( 18, "Melfina", "Elfo", "Maridia", 1.92, 36.6, "Un Desastre", 50, 80, 70, "Spammer", "Arma", 999) );
+        personajes.add( new Clerigo ( 70, "Ghonorr", "Mediano", "Norfair", 1.56, 50.4, "Gris", 40, 97, 55, "Lead", "Barbelos", "Bien Cool") );
+        personajes.add( new Mago ( 15, "Lydia", "Elfo", "Brinstar", 1.88, 28.8, "Nerd", 20, 101, 68, "Support", "Magia Negra" ) ); 
         while (flag == true){
             System.out.println("1) Add Character");
             System.out.println("2) Listar Characters");
@@ -652,27 +656,166 @@ public class P2Lab3_RigobertoBarahona {
                         int turno = 1;
                         boolean duel = true;
                         System.out.println(combate.get(0).getNombre() + " vs " + combate.get(1).getNombre() );
-                        int cCS1 = combate.get(0).getCS();
-                        int cHP1 = combate.get(0).getHP();
-                        int cAC1 = combate.get(0).getAC();
-                        int cCS2 = combate.get(1).getCS();
-                        int cHP2 = combate.get(1).getHP();
-                        int cAC2 = combate.get(1).getAC();
-                        while(duel == true){
-                            int dmg;
+                        double cCS1 = combate.get(0).getCS();
+                        double cHP1 = combate.get(0).getHP();
+                        double cAC1 = combate.get(0).getAC();
+                        double cCS2 = combate.get(1).getCS();
+                        double cHP2 = combate.get(1).getHP();
+                        double cAC2 = combate.get(1).getAC();
+                        
+                        if (combate.get(0).getPclass().equals("Lead") ){
+                            double crit = cCS1 * 0.05;
+                            cCS1 = cCS1 + crit;
+                        } else if (combate.get(0).getPclass().equals("Support") ){
+                            double crit = cCS1 * 0.02;
+                            cCS1 = cCS1 + crit;  
+                        } else if (combate.get(0).getPclass().equals("Spammer") ){
+                            double crit = cCS1 * 0.01;
+                            cCS1 =  cCS1 - crit;
+                        }else if (combate.get(0).getPclass().equals("Offensive") ){
+                            double hp = cHP1 * 0.01;
+                            cHP1 = cHP1 - hp;
                         }
+                        // Seperacion
+                        if (combate.get(1).getPclass().equals("Lead") ){
+                            double crit = cCS2 * 0.05;
+                            cCS2 = cCS2 + crit;
+                        } else if (combate.get(1).getPclass().equals("Support") ){
+                            double crit = cCS2 * 0.02;
+                            cCS2 = cCS2 + crit;  
+                        } else if (combate.get(1).getPclass().equals("Spammer") ){
+                            double crit = cCS2 * 0.01;
+                            cCS2 =  cCS2 - crit;
+                        }else if (combate.get(1).getPclass().equals("Offensive") ){
+                            double hp = cHP2 * 0.01;
+                            cHP2 = cHP2 - hp;
+                        }
+                        // Base Values
+                        double Crit1 = cCS1;
+                        double Crit2 = cCS2; 
+                        double AC1 = cAC1;
+                        double AC2 = cAC2;
+                        int cOPT1 = 0;
+                        int cOPT2 = 0;
+                        // Acumulativos
+                        double SupportAC1 = cAC1 * 0.03;
+                        double SupportAC2 = cAC2 * 0.03;
+                        double SPMac1 = cAC1 * 0.02;
+                        double SPMac2 = cAC2 * 0.02;                        
+                        double TankHP1 = cHP1 * 0.02;
+                        double TankHP2 = cHP2 * 0.02;
                         
-                        
-                        
+                        while(duel == true){
+                            
+                            System.out.println("Turn " + turno + " ");
+                            // Jugador
+                            if (turno%2 != 0){
+                                cAC1 = AC1;
+                                if (combate.get(0).getPclass().equals("Support") ){
+                                    SupportAC1 = cAC1 * 0.03;
+                                    cAC1 = cAC1 + SupportAC1;
+                                    SupportAC1 = SupportAC1 + SupportAC1;
+                                } else if (combate.get(0).getPclass().equals("Spammer")){
+                                    SPMac1 = cAC1 * 0.02;
+                                    cAC1 = cAC1 + SPMac1;
+                                    SPMac1 = SPMac1 + SPMac1;
+                                } else if (combate.get(0).getPclass().equals("Tank") ){
+                                    TankHP1 = cHP1 * 0.02;
+                                    cHP1 = cHP1 + TankHP1;                                    
+                                }
+                                System.out.println(combate.get(0).getNombre() + " " + "\n" + "HP: " + cHP1);
+                                System.out.println("1) Atacar");
+                                System.out.println("2) Defender");
+                                System.out.print("Seleccionar opcion: ");
+                                cOPT1 = lea.nextInt();
+                                
+                                if (cOPT1 == 1){
+                                    double DMG = r.nextInt(100);
+                                    if (combate.get(0).getPclass().equals("Offensive") ){
+                                        double bonus = DMG * 0.05;
+                                        DMG = DMG + bonus;
+                                    } else if (combate.get(0).getPclass().equals("Spammer") ){
+                                        double bonus = DMG * 0.03;
+                                        DMG = DMG + bonus;
+                                    }
+                                    if (DMG > cAC2){
+                                        if (DMG > cCS1){
+                                            DMG = DMG * 2;
+                                            cHP2 = cHP2 - DMG;
+                                        }else{
+                                            cHP2 = cHP2 - DMG;
+                                        }
+                                        if (cHP2 <= 0){
+                                            duel = false;
+                                            combate.remove(1);
+                                        }
+                                    } else{
+                                        System.out.println("Miss!");
+                                    }         
+                                } else if (cOPT1 == 2) {
+                                    cAC1 = cAC1 + 10;
+                                }else{
+                                    System.out.println("You do nothing");
+                                }
+                                turno++;
+                            // Computadora    
+                            } else {
+                                cAC2 = AC2;
+                                if (combate.get(1).getPclass().equals("Support")) {
+                                    SupportAC2 = cAC2 * 0.03;
+                                    cAC2 = cAC2 + SupportAC2;
+                                    SupportAC2 = SupportAC2 + SupportAC2;
+                                } else if (combate.get(1).getPclass().equals("Spammer")) {
+                                    SPMac2 = cAC2 * 0.02;
+                                    cAC2 = cAC2 + SPMac2;
+                                    SPMac2 = SPMac2 + SPMac2;
+                                } else if (combate.get(1).getPclass().equals("Tank")) {
+                                    TankHP2 = cHP2 * 0.02;
+                                    cHP2 = cHP2 + TankHP2;
+                                }
+                                System.out.println(combate.get(1).getNombre() + " " + "\n" + "HP: " + cHP2);
+                                cOPT2 = r.nextInt(2);
+                                if (cOPT2 == 1) {
+                                    double DMG = r.nextInt(100);
+                                    if (combate.get(1).getPclass().equals("Offensive")) {
+                                        double bonus = DMG * 0.05;
+                                        DMG = DMG + bonus;
+                                    } else if (combate.get(1).getPclass().equals("Spammer")) {
+                                        double bonus = DMG * 0.03;
+                                        DMG = DMG + bonus;
+                                    }
+                                    if (DMG > cAC1) {
+                                        if (DMG > cCS2) {
+                                            DMG = DMG * 2;
+                                            cHP1 = cHP1 - DMG;
+                                        } else {
+                                            cHP1 = cHP1 - DMG;
+                                        }
+                                        if (cHP1 <= 0) {
+                                            duel = false;
+                                            combate.remove(0);
+                                        }
+                                    } else {
+                                        System.out.println("Miss!");
+                                    }
+                                } else if (cOPT2 == 2) {
+                                    cAC2 = cAC2 + 10;
+                                } else {
+                                    System.out.println("You do nothing");
+                                }
+                                turno++;
+                            }
+                        }
+                        System.out.println(combate.get(0).getNombre() + " ha Ganado el duelo!");
                     }
                     break;
                 }
-                default : {
+                default: {
                     flag = false;
                     break;
                 }
             }
         }
     }
-    
+
 }
