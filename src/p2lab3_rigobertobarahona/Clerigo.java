@@ -46,7 +46,7 @@ public class Clerigo extends Personaje {
         + "AC: " + AC + "\n"
         + "CS: " + CS + "\n"
         + "HP: " + HP + "\n"
-        + "Invocacion: " + invocacion;  
+        + "Invocacion: " + invocacion + "\n";  
     }
     
     

@@ -39,7 +39,7 @@ public class Barbaro extends Personaje {
         + "AC: " + AC + "\n"
         + "CS: " + CS + "\n"
         + "HP: " + HP + "\n"
-        + "Arma: " + arma;  
+        + "Arma: " + arma + "\n";  
     }
     
     

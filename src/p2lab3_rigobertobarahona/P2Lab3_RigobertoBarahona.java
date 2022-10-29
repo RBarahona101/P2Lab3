@@ -644,7 +644,7 @@ public class P2Lab3_RigobertoBarahona {
                         combate.add(personajes.get(indice1));
                         boolean pendejo = true;
                         while (pendejo == true) {
-                            System.out.println("Personaje de Jugador 2 (No hay mirror matches): ");
+                            System.out.print("Personaje de Jugador 2 (No hay mirror matches): ");
                             int indice2 = lea.nextInt();
                             if (indice2 == indice1){
                                 System.out.println("No habra mirror matches");
@@ -665,13 +665,13 @@ public class P2Lab3_RigobertoBarahona {
                         
                         if (combate.get(0).getPclass().equals("Lead") ){
                             double crit = cCS1 * 0.05;
-                            cCS1 = cCS1 + crit;
+                            cCS1 = cCS1 - crit;
                         } else if (combate.get(0).getPclass().equals("Support") ){
                             double crit = cCS1 * 0.02;
-                            cCS1 = cCS1 + crit;  
+                            cCS1 = cCS1 - crit;  
                         } else if (combate.get(0).getPclass().equals("Spammer") ){
                             double crit = cCS1 * 0.01;
-                            cCS1 =  cCS1 - crit;
+                            cCS1 =  cCS1 + crit;
                         }else if (combate.get(0).getPclass().equals("Offensive") ){
                             double hp = cHP1 * 0.01;
                             cHP1 = cHP1 - hp;
@@ -723,7 +723,7 @@ public class P2Lab3_RigobertoBarahona {
                                     TankHP1 = cHP1 * 0.02;
                                     cHP1 = cHP1 + TankHP1;                                    
                                 }
-                                System.out.println(combate.get(0).getNombre() + " " + "\n" + "HP: " + cHP1);
+                                System.out.println(combate.get(0).getNombre() + " " + "\n" + "HP: " + cHP1 + "\n" + "AC: " + cAC1 + "\n" + "CS: " + cAC1);
                                 System.out.println("1) Atacar");
                                 System.out.println("2) Defender");
                                 System.out.print("Seleccionar opcion: ");
@@ -738,16 +738,20 @@ public class P2Lab3_RigobertoBarahona {
                                         double bonus = DMG * 0.03;
                                         DMG = DMG + bonus;
                                     }
+                                    System.out.println(DMG);
                                     if (DMG > cAC2){
                                         if (DMG > cCS1){
                                             DMG = DMG * 2;
                                             cHP2 = cHP2 - DMG;
+                                            System.out.println("Critical Hit!");
                                         }else{
                                             cHP2 = cHP2 - DMG;
+                                            System.out.println("Hit!");
                                         }
                                         if (cHP2 <= 0){
                                             duel = false;
                                             combate.remove(1);
+                                            System.out.println(combate.get(1).getNombre() + " ha sido derrotado!");
                                         }
                                     } else{
                                         System.out.println("Miss!");
@@ -773,7 +777,7 @@ public class P2Lab3_RigobertoBarahona {
                                     TankHP2 = cHP2 * 0.02;
                                     cHP2 = cHP2 + TankHP2;
                                 }
-                                System.out.println(combate.get(1).getNombre() + " " + "\n" + "HP: " + cHP2);
+                                System.out.println(combate.get(1).getNombre() + " " + "\n" + "HP: " + cHP2 + "\n" + "AC: " + cAC2 + "\n" + "CS: " + cCS2);
                                 cOPT2 = r.nextInt(2);
                                 if (cOPT2 == 1) {
                                     double DMG = r.nextInt(100);
@@ -784,16 +788,20 @@ public class P2Lab3_RigobertoBarahona {
                                         double bonus = DMG * 0.03;
                                         DMG = DMG + bonus;
                                     }
+                                    System.out.println(DMG);
                                     if (DMG > cAC1) {
                                         if (DMG > cCS2) {
                                             DMG = DMG * 2;
                                             cHP1 = cHP1 - DMG;
+                                            System.out.println("Critical Hit!");
                                         } else {
                                             cHP1 = cHP1 - DMG;
+                                            System.out.println("Hit!");
                                         }
                                         if (cHP1 <= 0) {
                                             duel = false;
                                             combate.remove(0);
+                                            System.out.println(combate.get(0).getNombre() + " ha sido derrotado!");
                                         }
                                     } else {
                                         System.out.println("Miss!");
@@ -807,6 +815,7 @@ public class P2Lab3_RigobertoBarahona {
                             }
                         }
                         System.out.println(combate.get(0).getNombre() + " ha Ganado el duelo!");
+                        combate.clear();
                     }
                     break;
                 }
