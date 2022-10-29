@@ -750,8 +750,9 @@ public class P2Lab3_RigobertoBarahona {
                                         }
                                         if (cHP2 <= 0){
                                             duel = false;
-                                            combate.remove(1);
                                             System.out.println(combate.get(1).getNombre() + " ha sido derrotado!");
+                                            combate.remove(1);
+                                            
                                         }
                                     } else{
                                         System.out.println("Miss!");
@@ -800,8 +801,8 @@ public class P2Lab3_RigobertoBarahona {
                                         }
                                         if (cHP1 <= 0) {
                                             duel = false;
-                                            combate.remove(0);
                                             System.out.println(combate.get(0).getNombre() + " ha sido derrotado!");
+                                            combate.remove(0);
                                         }
                                     } else {
                                         System.out.println("Miss!");
